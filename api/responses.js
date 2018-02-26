@@ -60,7 +60,19 @@ const twainQuotes = [
   {quote:"Good friends, good books and a sleepy conscience: this is the ideal life.", author: "Mark Twain"}
 ];
 
-const lyrics = [];
+const lyrics = [
+  {lyric:"Emancipate yourselves from mental slavery. None but ourselves can free our minds.", artist: "Bob Marley"},
+  {lyric:"Don't criticize what you can't understand.", artist: "Bob Dylan"},
+  {lyric:"You're an expert at sorry and keeping the lines blurry", artist: "Taylor Swift"},
+  {lyric:"We all shine on...like the moon and the stars and the sun...we all shine on...come on and on and on..", artist: "John Lennon\n"},
+  {lyric:"Excuse me while I kiss the sky.", artist: "Jimi Hendrix"},
+  {lyric:"You don't know, oh, oh. You don't know you're beautiful.", artist: "One Direction"},
+  {lyric:"Don't it always seem to go, that you don't know what you've got till it's gone.", artist: "Joni Mitchell"},
+  {lyric:"There must be some kind of way out of here,' said the joker to the thief...", artist: "Bob Dylan"},
+  {lyric:"Let me fall out of the window, With confetti in my hair", artist: "Tom Waits"},
+  {lyric:"I wanna be the girl with the most cake.", artist: "Courtney Love"}
+];
+
 
 module.exports.specialResponses = [
   {
@@ -126,6 +138,11 @@ function myResponse(req, res) {
         quote: quote.quote,
         author: quote.author
       });
+  }
+
+  if (req.body.responsetype === 'lyric') {
+    var resp = lyrics[Math.floor(Math.random() * lyrics.length)];
+    return res.status(200).json(resp);
   }
 
 
