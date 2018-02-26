@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <h2>Select a response below to control how the API reacts to your next request</h2>
+
+      <% if (nextResponse) { %>
+        <p>Next Response: <%= nextResponse %>
+        <a class="btn btn-default btn-xs" type="button" href="/">Reset</a>
+      <% } %>
+
+      <table class="table">
+      <thead>
+        <tr>
+          <th>API Response</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% for(var i=0; i < specialResponses.length; i++) { %>
+          <tr>
+            <td>
+<a class="btn btn-default btn-sm" type="button" href="/action/<%= specialResponses[i].name %>"><%= specialResponses[i].name %></a>
+            </td>
+            <td>
+            <% if (specialResponses[i].type == 'success') { %>
+              <span class="label label-success">Success</span>
+            <% } %>
+            <% if (specialResponses[i].type == 'error') { %>
+              <span class="label label-danger">Error</span>
+            <% } %>
+            </td>
+         </tr>
+      <% } %>
+      </tbody>
+    </table>
+
+    </div><!-- /.container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>

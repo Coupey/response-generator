@@ -1,2 +1,5 @@
-# response-generator
-Simple API endpoint for returning some random responses
+Mock API request
+-----------
+
+Emulates backend service API calls. Allowing the ability to return different responses at runtime
+
