@@ -88,6 +88,8 @@ module.exports.handlers = function(app, nextResponse) {
     console.log('Received body:');
     console.log(req.body);
 
+    console.log("Nino is: " + req.params.nino);
+
     if (nextResponse() === 'ERROR') {
       return error(res);
     }
@@ -107,6 +109,12 @@ function error(res) {
 
 function myResponse(req, res) {
 
+  if (!req.body.responsetype || !req.body.name || !req.body.dob) {
+    return res.status(400).json({
+      "errorType": "Required fields (responsetype, name, dob) not present"
+    });
+  }
+
   if (req.body.responsetype === '8ball') {
     var answer = ballResponses[Math.floor(Math.random() * ballResponses.length)];
     return res.status(200).json({
@@ -120,7 +128,6 @@ function myResponse(req, res) {
 
     switch (req.body.quoter) {
       case 'churchill':
-        console.log('chur')
         quotes = churchillQuotes;
         break;
       case 'wilde':
