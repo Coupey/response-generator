@@ -1,5 +1,10 @@
 Mock API request
 -----------
 
-Emulates backend service API calls. Allowing the ability to return different responses at runtime
+Emulates backend service API calls. 
 
+`npm install`
+
+`npm run start`
+
+Default port is 8001
